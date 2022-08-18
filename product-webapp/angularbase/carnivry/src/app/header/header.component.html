@@ -1,0 +1,49 @@
+<!-- Header -->
+<mat-toolbar>
+  <mat-toolbar-row>
+
+    <!-- Logo -->
+    <div>
+      <a> <img class="logo" src="assets\\carnivry.png" (click)="logo()"> </a>
+    </div>
+
+    <!-- Search box -->
+    <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
+    <div class="suggestion-box">
+      <div style="width:100% ;" *ngFor="let event of titleList">
+      <div (click)="openViewPage(event.eventId)" class="suggestions">{{event.title}}</div>
+      </div>
+    </div>
+
+    <div style="margin-left: 200px;display: flex; width: 450px; height: 50px; align-items: center;">
+
+      <!-- Add Event -->
+      <div style="display: flex;">
+
+        <section>
+          <button mat-button (click)="addEvent()">Add Event</button>
+        </section>
+
+        <!-- Choose city -->
+        <section>
+          <button mat-button (click)="openDialog()">{{city}}
+            <mat-icon>location_city</mat-icon>
+          </button>
+
+        </section>
+
+        <!-- Home -->
+        <section>
+          <button mat-button (click)="home()">Home</button>
+        </section>
+
+        <!-- Sign In -->
+        <app-home></app-home>
+      </div>
+
+    </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

@@ -1,0 +1,23 @@
+.social-media{
+    height: 3rem;
+    margin-right:25px;
+}
+
+@media only screen  and (min-width: 820px ){
+    .copyright{
+        margin-left: 150px;
+    }
+}
+
+#footer{
+    background-color: rgb(237, 233, 236);
+    /* color: wheat; */
+    padding-top: 2rem;
+}
+
+.logo{
+    margin-left: 20px;
+    width: 180px;
+    height: 60px;
+    /* background-color: maroon; */
+  }

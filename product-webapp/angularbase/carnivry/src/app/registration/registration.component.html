@@ -1,0 +1,164 @@
+<div class="container registration">
+
+
+    <div class="myCard">
+        <div class="row">
+
+
+
+            <div class="col-sm-6">
+
+                <div class="myLeftCtn">
+
+                    <form [formGroup]="registerUserForm" (ngSubmit)="register()" class="myForm text-center">
+
+                        <header>Create new account</header>
+
+                        <div class="form-group input">
+                            <i class="fas fa-user" id="fas_1"></i>
+                            <input type="text" formControlName="name" class="form-control myInput"
+                                placeholder="Full Name"
+                                [ngClass]="{'is-invalid': f['name'].errors && f['name'].touched}" />
+                            <div *ngIf="f['name'].errors && (f['name'].touched || f['name'].dirty)"
+                                class="alert alert-danger" role="alert">
+                                <div *ngIf="f['name'].errors['required']">Name Required</div>
+                                <div *ngIf="f['name'].errors['minlength']">Name must be atleast 4 characters</div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group input">
+                            <i class="fas fa-envelope" id="fas_2"></i>
+                            <input type="email" formControlName="email" class="form-control myInput" placeholder="Email"
+                                [ngClass]="{'is-invalid': f['email'].errors && f['email'].touched}" />
+                            <div *ngIf="f['email'].errors && (f['email'].touched || f['email'].dirty)"
+                                class="alert alert-danger" role="alert">
+                                <div *ngIf="f['email'].errors['required']">Email Required</div>
+                                <div *ngIf="f['email'].errors['email']">Invalid Email</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group input">
+                            <!-- <mat-form-field  appearance="standard" class="date" style="border: 0px;">
+                                
+                                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" style="padding-top: 0px;"
+                                formControlName="dob" class="form-control" placeholder="Enter Date of Birth">
+                                <mat-hint>MM/DD/YYYY- Minimum age 18 years </mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field> -->
+                           
+                            <i class="fas fa-birthday-cake" ></i>
+                          
+                            
+                            <input type="date" id="dob" formControlName="dob" class="form-control myInput"
+                                 [min]="minDate" [max]="maxDate"/>
+
+                            <div *ngIf="f['dob'].errors && (f['dob'].touched || f['dob'].dirty)"
+                                class="alert alert-danger" role="alert">
+                                <div *ngIf="f['dob'].errors['required']">Date of Birth Required</div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group input">
+                            <i class="fas fa-lock" id="fas_3"></i>
+                            <input type="password" formControlName="password" class="form-control myInput"
+                                placeholder="Password"
+                                [ngClass]="{'is-invalid': f['password'].errors && f['password'].touched}" />
+                            <div *ngIf="f['password'].errors && (f['password'].touched || f['password'].dirty)"
+                                class="alert alert-danger" role="alert">
+                                <div *ngIf="f['password'].errors['required']">Password Required</div>
+                                <div *ngIf="f['password'].errors['minlength']">Password must contain atleast 8
+                                    characters</div>
+                                <div *ngIf="f['password'].errors['maxlength']">Password must contain atmost 20
+                                    characters</div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group input">
+                            <i class="fas fa-lock" id="fas_4"></i>
+                            <input type="password" formControlName="matchingPassword" class="form-control myInput"
+                                placeholder="Confirm Password"
+                                [ngClass]="{'is-invalid': f['matchingPassword'].errors && f['matchingPassword'].touched}" />
+                            <div *ngIf="f['matchingPassword'].errors && (f['matchingPassword'].touched || f['matchingPassword'].dirty)"
+                                class="alert alert-danger" role="alert">
+                                <div *ngIf="f['matchingPassword'].errors['required']">Matching Password Required</div>
+                                <div *ngIf="f['matchingPassword'].errors['matching']">Password Not Matching</div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="input " *ngIf="failureMessage">
+                            <div *ngIf="failureMessage" class="alert alert-warning message" role="alert">
+                                {{failureMessage}}
+                            </div>
+                            <div *ngIf="successMessage" class="alert alert-success message" role="alert">
+                                {{successMessage}}
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="butt_box">
+                            <button type="submit" class="butt" [disabled]="!registerUserForm.valid">Register</button>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col s12">
+                                <a routerLink="/registration/login">Already a User? Login</a>
+                            </div>
+                        </div>
+
+                    </form>
+
+
+                    <hr>
+
+                    <div class="input">
+                        <header>Social Sign In </header>
+                        <div class="social_icons">
+                            <button class="btn btn-light" (click)="signinGoogle()">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="btn btn-light" (click)="signinGithub()">
+                                <i class="fab fa-github"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-6">
+                <div class="myRightCtn">
+                    <div class="close_button">
+                        <a routerLink="/landing-page" style="color: white;">
+                            <mat-icon id="clear">clear</mat-icon>
+                        </a>
+                        
+                    </div>
+                    
+                    
+                    <div class="box">
+                        	
+                        <header>Carnivry</header>
+
+                        <p><i>&emsp;The universe of events designed to architect your sweetest memories </i></p>
+                        <input type="button" class="butt_out" value="Learn More" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
